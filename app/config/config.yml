@@ -66,3 +66,18 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+httplug:
+    classes:
+        client: Http\Adapter\Guzzle6\Client
+        message_factory: Http\Message\MessageFactory\GuzzleMessageFactory
+    clients:
+        acme:
+            factory: httplug.factory.guzzle6
+
+ivory_google_map:
+    geocoder:
+        client: httplug.client.default
+        message_factory: httplug.message_factory.default
+        https: true
+        format: json
