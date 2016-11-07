@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "76b866623a3a7b940f50333aa68f7f17",
-    "content-hash": "51a14f886d9b7df3b8d3b003cfe374f6",
+    "hash": "8151a6f1173b93df6889ec8d2b58c93a",
+    "content-hash": "1d0214a9ac00dce8dcd575ceaceb46ed",
     "packages": [
         {
             "name": "clue/stream-filter",
@@ -1266,6 +1266,52 @@
                 "sql"
             ],
             "time": "2014-01-12 16:20:24"
+        },
+        {
+            "name": "joshtronic/php-googleplaces",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/joshtronic/php-googleplaces.git",
+                "reference": "c72e2b06e1a2dcf7fa6d9b34fbe2d72edc68b012"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/joshtronic/php-googleplaces/zipball/c72e2b06e1a2dcf7fa6d9b34fbe2d72edc68b012",
+                "reference": "c72e2b06e1a2dcf7fa6d9b34fbe2d72edc68b012",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "satooshi/php-coveralls": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "joshtronic\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Josh Sherman",
+                    "email": "josh@gravityblvd.com",
+                    "homepage": "http://joshtronic.com"
+                }
+            ],
+            "description": "PHP Wrapper for the Google Places API",
+            "homepage": "https://github.com/joshtronic/php-googleplaces",
+            "keywords": [
+                "api",
+                "google",
+                "places"
+            ],
+            "time": "2014-09-20 19:38:53"
         },
         {
             "name": "monolog/monolog",
@@ -3172,7 +3218,8 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "egeloen/google-map-bundle": 20,
-        "egeloen/google-map": 20
+        "egeloen/google-map": 20,
+        "joshtronic/php-googleplaces": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
