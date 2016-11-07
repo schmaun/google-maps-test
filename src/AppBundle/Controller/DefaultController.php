@@ -2,6 +2,8 @@
 
 namespace AppBundle\Controller;
 
+use Ivory\GoogleMap\Service\Geocoder\Request\GeocoderAddressRequest;
+use Ivory\GoogleMap\Service\Geocoder\Request\GeocoderComponentType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -13,9 +15,19 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        // replace this example code with whatever you need
+        $address = $request->get('address', 'Berlin');
+        $geoCoderRequest = new GeocoderAddressRequest($address);
+        $geoCoderRequest->setLanguage('de');
+        $geoCoderRequest->setComponents([
+            GeocoderComponentType::COUNTRY => 'DE'
+        ]);
+
+        $response = $this->get('own_geocoder')->geocodeRaw($geoCoderRequest);
+
+
         return $this->render('default/index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
+            'address' => $address,
+            'response' => print_r($response, true),
         ]);
     }
 }
