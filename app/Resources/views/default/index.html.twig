@@ -1,8 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <p>Use ?address=xxx to get query geocoder.</p>
-    <h3>Result for "{{ address }}":</h3>
+    <h3>Result for "{{ request }}":</h3>
     <pre>
 {{ response|raw }}
     </pre>

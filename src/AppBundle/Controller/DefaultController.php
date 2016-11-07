@@ -11,23 +11,38 @@ use Symfony\Component\HttpFoundation\Request;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/", name="homepage")
+     * @Route("/geocoder", name="geocoder")
      */
-    public function indexAction(Request $request)
+    public function geocoderAction(Request $request)
     {
-        $address = $request->get('address', 'Berlin');
+        $address = $request->get('q', 'Berlin');
         $geoCoderRequest = new GeocoderAddressRequest($address);
         $geoCoderRequest->setLanguage('de');
         $geoCoderRequest->setComponents([
             GeocoderComponentType::COUNTRY => 'DE'
         ]);
 
-        $response = $this->get('own_geocoder')->geocodeRaw($geoCoderRequest);
+        $geocodeRaw = $this->get('own_geocoder')->geocodeRaw($geoCoderRequest);
 
 
         return $this->render('default/index.html.twig', [
-            'address' => $address,
-            'response' => print_r($response, true),
+            'request' => $address,
+            'response' => print_r($geocodeRaw, true),
+        ]);
+    }
+
+    /**
+     * @Route("/placesDetails", name="placesDetails")
+     */
+    public function placesDetailsAction(Request $request)
+    {
+        $reference = $request->get('q');
+        $placesService = $this->get('places')->details($reference);
+
+
+        return $this->render('default/index.html.twig', [
+            'request' => $reference,
+            'response' => print_r($placesService, true),
         ]);
     }
 }

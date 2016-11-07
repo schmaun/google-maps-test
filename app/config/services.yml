@@ -7,3 +7,8 @@ services:
     own_geocoder:
         class: AppBundle\Services\GeocoderService
         parent: ivory.google_map.geocoder
+
+    places:
+        class: AppBundle\Services\PlacesService
+        arguments:
+          - "%google.maps.api_key%"
