@@ -21,7 +21,7 @@ class PlacesService
     public function details($reference)
     {
         $google_places = new \joshtronic\GooglePlaces($this->apiKey);
-        $google_places->reference = $reference;
+        $google_places->placeid = $reference;
 
         return $google_places->details();
     }
